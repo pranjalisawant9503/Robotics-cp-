@@ -1,0 +1,29 @@
+# JavaScript dependencies and build output
+node_modules/
+frontend/dist/
+backend/dist/
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# ROS 2 generated directories
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+
+# PlatformIO generated files
+esp32_firmware/.pio/
+esp32_firmware/.vscode/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp

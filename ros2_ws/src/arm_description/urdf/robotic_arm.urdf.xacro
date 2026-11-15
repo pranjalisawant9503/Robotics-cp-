@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robotic_arm_digital_twin">
+
+  <!-- World link -->
+  <link name="world"/>
+
+  <!-- Base Link -->
+  <joint name="base_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.06" length="0.08"/>
+      </geometry>
+      <material name="dark_grey">
+        <color rgba="0.1 0.15 0.2 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.06" length="0.08"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.5"/>
+      <inertia ixx="0.002" ixy="0" ixz="0" iyy="0.002" iyz="0" izz="0.003"/>
+    </inertial>
+  </link>
+
+  <!-- Joint 1: Base Yaw -->
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.08" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14159" upper="3.14159" effort="10.0" velocity="2.0"/>
+  </joint>
+
+  <link name="link1">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.04"/>
+      </geometry>
+      <material name="cyan">
+        <color rgba="0.0 0.9 1.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joint 2: Shoulder Pitch -->
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0.04" rpy="1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5708" upper="1.5708" effort="15.0" velocity="2.0"/>
+  </joint>
+
+  <link name="link2">
+    <visual>
+      <origin xyz="0.06 0 0" rpy="0 1.5708 0"/>
+      <geometry>
+        <box size="0.03 0.035 0.12"/>
+      </geometry>
+      <material name="dark">
+        <color rgba="0.05 0.08 0.15 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joint 3: Elbow Pitch -->
+  <joint name="joint3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin xyz="0.12 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.356" upper="2.356" effort="12.0" velocity="2.5"/>
+  </joint>
+
+  <link name="link3">
+    <visual>
+      <origin xyz="0.05 0 0" rpy="0 1.5708 0"/>
+      <geometry>
+        <box size="0.024 0.028 0.10"/>
+      </geometry>
+      <material name="purple">
+        <color rgba="0.6 0.3 0.8 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joint 4: Wrist Pitch -->
+  <joint name="joint4" type="revolute">
+    <parent link="link3"/>
+    <child link="link4"/>
+    <origin xyz="0.10 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5708" upper="1.5708" effort="5.0" velocity="3.0"/>
+  </joint>
+
+  <link name="link4">
+    <visual>
+      <geometry>
+        <cylinder radius="0.015" length="0.04"/>
+      </geometry>
+      <material name="cyan"/>
+    </visual>
+  </link>
+
+  <!-- Joint 5: Wrist Roll -->
+  <joint name="joint5" type="revolute">
+    <parent link="link4"/>
+    <child link="link5"/>
+    <origin xyz="0 0 0.04" rpy="-1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14159" upper="3.14159" effort="3.0" velocity="4.0"/>
+  </joint>
+
+  <link name="link5">
+    <visual>
+      <origin xyz="0 0 0.03" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.012" length="0.06"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+  </link>
+
+</robot>

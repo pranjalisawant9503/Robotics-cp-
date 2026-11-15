@@ -1,0 +1,122 @@
+{
+  "name": "RoboTwin 6-DOF Research Manipulator",
+  "version": "2.0.0",
+  "dof": 6,
+  "reach_m": 0.62,
+  "reach_mm": 620,
+  "mounting": "table",
+  "base_height_mm": 120,
+  "links": {
+    "base_pedestal_mm": 120,
+    "upper_arm_mm": 220,
+    "forearm_mm": 180,
+    "wrist_1_mm": 60,
+    "wrist_2_mm": 50,
+    "flange_gripper_mm": 60
+  },
+  "joints": [
+    {
+      "id": 1,
+      "name": "Base Yaw",
+      "type": "revolute",
+      "axis": "y",
+      "min_deg": -170,
+      "max_deg": 170,
+      "min_rad": -2.967,
+      "max_rad": 2.967,
+      "max_velocity_rad_s": 2.5,
+      "max_accel_rad_s2": 5.0,
+      "dh": { "d": 120, "a": 0, "alpha": 90, "theta_offset": 0 },
+      "servo_mapping": { "channel": 0, "pwm_min_us": 500, "pwm_max_us": 2500, "zero_deg": 0 }
+    },
+    {
+      "id": 2,
+      "name": "Shoulder Pitch",
+      "type": "revolute",
+      "axis": "x",
+      "min_deg": -110,
+      "max_deg": 110,
+      "min_rad": -1.92,
+      "max_rad": 1.92,
+      "max_velocity_rad_s": 2.0,
+      "max_accel_rad_s2": 4.0,
+      "dh": { "d": 0, "a": 220, "alpha": 0, "theta_offset": 0 },
+      "servo_mapping": { "channel": 1, "pwm_min_us": 500, "pwm_max_us": 2500, "zero_deg": 0 }
+    },
+    {
+      "id": 3,
+      "name": "Elbow Pitch",
+      "type": "revolute",
+      "axis": "x",
+      "min_deg": -140,
+      "max_deg": 140,
+      "min_rad": -2.443,
+      "max_rad": 2.443,
+      "max_velocity_rad_s": 2.5,
+      "max_accel_rad_s2": 5.0,
+      "dh": { "d": 0, "a": 180, "alpha": 0, "theta_offset": 0 },
+      "servo_mapping": { "channel": 2, "pwm_min_us": 500, "pwm_max_us": 2500, "zero_deg": 0 }
+    },
+    {
+      "id": 4,
+      "name": "Forearm Roll",
+      "type": "revolute",
+      "axis": "y",
+      "min_deg": -170,
+      "max_deg": 170,
+      "min_rad": -2.967,
+      "max_rad": 2.967,
+      "max_velocity_rad_s": 3.0,
+      "max_accel_rad_s2": 6.0,
+      "dh": { "d": 60, "a": 0, "alpha": 90, "theta_offset": 0 },
+      "servo_mapping": { "channel": 3, "pwm_min_us": 500, "pwm_max_us": 2500, "zero_deg": 0 }
+    },
+    {
+      "id": 5,
+      "name": "Wrist Pitch",
+      "type": "revolute",
+      "axis": "x",
+      "min_deg": -120,
+      "max_deg": 120,
+      "min_rad": -2.094,
+      "max_rad": 2.094,
+      "max_velocity_rad_s": 3.0,
+      "max_accel_rad_s2": 6.0,
+      "dh": { "d": 0, "a": 50, "alpha": -90, "theta_offset": 0 },
+      "servo_mapping": { "channel": 4, "pwm_min_us": 500, "pwm_max_us": 2500, "zero_deg": 0 }
+    },
+    {
+      "id": 6,
+      "name": "Wrist Roll",
+      "type": "revolute",
+      "axis": "y",
+      "min_deg": -180,
+      "max_deg": 180,
+      "min_rad": -3.14159,
+      "max_rad": 3.14159,
+      "max_velocity_rad_s": 3.5,
+      "max_accel_rad_s2": 7.0,
+      "dh": { "d": 60, "a": 0, "alpha": 0, "theta_offset": 0 },
+      "servo_mapping": { "channel": 5, "pwm_min_us": 500, "pwm_max_us": 2500, "zero_deg": 0 }
+    }
+  ],
+  "gripper": {
+    "type": "parallel_2_finger",
+    "stroke_mm": 50,
+    "max_width_mm": 55,
+    "min_width_mm": 0,
+    "max_payload_kg": 0.8,
+    "finger_length_mm": 35,
+    "finger_width_mm": 8,
+    "open_offset_mm": 25,
+    "closed_offset_mm": 4,
+    "servo_mapping": { "channel": 6, "pwm_min_us": 1000, "pwm_max_us": 2000 }
+  },
+  "tolerances": {
+    "position_mm": 2.0,
+    "orientation_deg": 1.0,
+    "ik_max_iterations": 80,
+    "ik_damping_lambda": 0.08
+  }
+}
+
